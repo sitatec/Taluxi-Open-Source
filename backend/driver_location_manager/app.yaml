@@ -1,0 +1,7 @@
+runtime: nodejs12
+
+instance_class: F1
+
+automatic_scaling:
+  max_instances: 2
+  target_cpu_utilization: 0.9

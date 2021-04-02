@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Taluxi Driver</string>
+    <string name="facebook_app_id">690963638286209</string>
+    <string name="fb_login_protocol_scheme">fb690963638286209</string>
+    <string name="cancel_me">Cancel Me</string>
+    <string name="update_me">Update Me</string>
+    <string name="notify_me">Notify Me</string>
+    <string name="taluxi_client_title">Client Taluxi</string>
+    <string name="incoming_call_title">Appel entrant</string>
+    <string name="answer_call_button_text">DÉCROCHER</string>
+    <string name="hang_up_button_text">RACCROCHER</string>
+    <string name="taluxi_client_img_description">Image client taluxi</string>
+    <string name="speaker">Haut-Parleur</string>
+    <string name="microphone">Micro</string>
+    <string name="flutter_engine_id">flutter_engine_id</string>
+</resources>

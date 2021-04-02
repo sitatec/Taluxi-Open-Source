@@ -1,0 +1,29 @@
+[
+    {
+      "featureType": "poi",
+      "elementType": "labels",
+      "stylers": [
+        {
+          "lightness": 70
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "lightness": 35
+        }
+      ]
+    },
+    {
+      "featureType": "transit",
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "lightness": 35
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="75dp"
+    android:background="@drawable/call_bg">
+
+
+    <TextView
+        android:id="@+id/caller_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/taluxi_client_title"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/activity_caller_photo"/>
+
+
+    <ImageView
+        android:id="@+id/activity_caller_photo"
+        android:layout_width="100dp"
+        android:layout_height="100sp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/client_taluxi"
+        app:layout_constraintTop_toBottomOf="@id/caller_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/taluxi_client_img_description"
+        />
+
+    <TextView
+        android:id="@+id/call_timer"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        tool:text="04:23"
+        android:textColor="@color/green"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/activity_caller_photo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_speaker_button"
+        style="@style/fabs_style"
+        android:src="@drawable/ic_volume_up_24"
+        app:backgroundTint="@color/red"
+        app:borderWidth="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/activity_hang_up_button"
+        app:layout_constraintRight_toLeftOf="@id/activity_hang_up_button"
+        android:contentDescription="@string/speaker" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_hang_up_button"
+        style="@style/fabs_style"
+        android:src="@drawable/ic_hang_up_call"
+        android:layout_marginBottom="15dp"
+        app:backgroundTint="@color/red"
+        app:borderWidth="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/hang_up_button_text" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_microphone_button"
+        style="@style/fabs_style"
+        android:src="@drawable/ic_mic_off_24"
+        app:backgroundTint="@color/red"
+        app:borderWidth="0dp"
+        app:layout_constraintLeft_toRightOf="@id/activity_hang_up_button"
+        app:layout_constraintBottom_toBottomOf="@id/activity_hang_up_button"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/microphone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

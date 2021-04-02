@@ -1,0 +1,18 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "$latest_version_infos": {
+      ".read": "$latest_version_infos.contains('version') && auth != null",
+      ".write": "auth != null && auth.email == 'sita.berete.3@gmail.com'"
+    },
+    "online": {
+      "$city": {
+        "$uid": {
+          ".read": "auth != null",
+          ".write": "auth != null && auth.uid == $uid"
+        }
+      }
+    }
+  }
+}

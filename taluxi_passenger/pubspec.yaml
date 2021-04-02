@@ -1,0 +1,61 @@
+name: taluxi
+description: Taluxi project
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  taluxi_common:
+    path: ../packages/production/taluxi_common
+  user_manager:
+    path: ../packages/production/user_manager
+    # git:
+    #   url: https://github.com/sitatec/user_manager.git
+    #   ref: main
+  network_communication:
+    path: ../packages/production/network_communication
+    # git:
+    #   url: https://github.com/sitatec/network_communication.git
+    #   ref: main
+  real_time_location:
+    path: ../packages/production/real_time_location
+    # git:
+    #   url: https://github.com/sitatec/real_time_location.git
+    #   ref: main
+  cupertino_icons: ^1.0.0
+  google_maps_flutter: ^1.0.6
+  provider: ^4.3.2+3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  pedantic: ^1.9.0
+  mockito: ^4.1.3
+
+flutter:
+
+  assets:
+    - assets/images/
+    - assets/audio/
+
+  uses-material-design: true
+
+  fonts:
+    - family: LobsterTwo
+      fonts:
+        - asset: assets/fonts/LobsterTwo-Bold.ttf
+        - asset: assets/fonts/LobsterTwo-Regular.ttf
+          style: normal
+    - family: PatuaOne
+      fonts:
+        - asset: assets/fonts/PatuaOne-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+  

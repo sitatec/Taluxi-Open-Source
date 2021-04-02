@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:paddingHorizontal="13dp"
+    android:paddingTop="11dp"
+    android:paddingBottom="8dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/incoming_call_notification_header"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/incoming_call_notification_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/taluxi_client_title"
+                android:textColor="@color/black_600"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/incoming_call_notification_content_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incoming_call_title"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/caller_photo"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/mascot_1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/incoming_call_notification_footer"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/answer_call_button"
+            style="@style/incoming_call_notification_actions_style"
+            android:layout_marginRight="5dp"
+            android:backgroundTint="@color/green"
+            android:text="@string/answer_call_button_text" />
+
+        <Button
+            android:id="@+id/hang_up_button"
+            style="@style/incoming_call_notification_actions_style"
+            android:layout_marginLeft="5dp"
+            android:backgroundTint="@color/red"
+            android:text="@string/hang_up_button_text" />
+    </LinearLayout>
+
+
+</RelativeLayout>

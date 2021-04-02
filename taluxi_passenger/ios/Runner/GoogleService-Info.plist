@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>955990186740-ajn4s2ebr5o9skmirfiqfnffdpk56rmn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.955990186740-ajn4s2ebr5o9skmirfiqfnffdpk56rmn</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>955990186740-rvamvgldkmodsiq6qvfqc7morkevpl2q.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBOGExhNzheK62Q1DwxcbNLfYFL4Km6vdM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>955990186740</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.taluxi</string>
+	<key>PROJECT_ID</key>
+	<string>taluxi-360b0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>taluxi-360b0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:955990186740:ios:1dbf465ce196697db4dca1</string>
+</dict>
+</plist>

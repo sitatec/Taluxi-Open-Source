@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "955990186740",
+    "project_id": "taluxi-360b0",
+    "storage_bucket": "taluxi-360b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955990186740:android:97ee7b1597ed1155b4dca1",
+        "android_client_info": {
+          "package_name": "com.taluxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955990186740-rvamvgldkmodsiq6qvfqc7morkevpl2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taluxi",
+            "certificate_hash": "cdf4e4bcb9db409140988f4ae910776b994ea42a"
+          }
+        },
+        {
+          "client_id": "955990186740-4k5l91gsp4jqseeumg639ps85fbba4hk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApMWKjszSXNQxgfgm1Y_1PlKGBowPZ5q4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955990186740-4k5l91gsp4jqseeumg639ps85fbba4hk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

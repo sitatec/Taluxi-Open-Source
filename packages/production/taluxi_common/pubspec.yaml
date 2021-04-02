@@ -1,0 +1,32 @@
+name: taluxi_common
+description: Common widgets for taluxi project.
+version: 1.0.0
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.10.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  user_manager:
+    path: ../user_manager
+  provider: ^4.3.2+3
+  flutter_spinkit: ^4.1.2+1
+  assets_audio_player: ^2.0.13+1
+  flutter_svg: ^0.19.3
+  real_time_location:
+    path: ../real_time_location
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+
+  assets:
+    - assets/images/
+    - assets/images/trophies/
+    - assets/images/animations/
