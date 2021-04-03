@@ -1,1 +1,18 @@
+# Taluxi
 ![taluxi_screenshots](https://github.com/sitatec/Taluxi-X/blob/main/assets/screens.png)
+
+Taluxi is a taxi finder solution with two mobile apps built with Flutter (Taluxi and Taluxi Driver) and two microservices (DriverLocationManager and DriverConnectionWatcher) built with Nodejs (TypeScript). DriverLocationManager is hosted by [Google App Engine](https://cloud.google.com/appengine) and DriverConnectionWatcher is running on [Firebase Cloud Functions](https://firebase.google.com/products/functions). 
+
+To make the project more maintainable, I made it fully modular. The apps themselves don't depend on any external service or library (except for the libraries for the UI) even the microservices that are part of the project, instead, they depend only on the [packages](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages) that are part of the project, and those packages depend on services like firebase, agora, or the project microservices. All the packages expose a clean API and apply most of the SOLID principles (so also the packages are maintainable).
+
+> ⚠️ The project is tested only on Android, the Taluxi Passenger app may work on IOS but the UI is not IOS app-like. The Taluxi Driver app will not work on IOS because native code 
+> is used to implement a custom incoming call notification with a full-screen intent. All the packages are fully tested but the apps themselves are not yet because the project is currently in development. 
+
+## Scenario
+> ℹ️ The __Taluxi__ app is built for the Clients and the __Taluxi Driver__ app for the drivers. A Client is a person which is looking for a taxi and a Driver is... simply a taxi driver. 
+
+A client launches the app and hits a button to search for a taxi, the app finds the nearest taxi and calls the driver, the client discusses with the driver if they have found an agreement the driver drive the client to him/her destination (the client can track the driver position on the map) otherwise the client call another taxi... (The app is built for some country where the taxis have not taxi meters, that is the reason why the client have to discusses with the driver for the price depending on the destination).
+
+## Relatively detailed scenario 
+Both client and driver use the [user_manager](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages/production/user_manager) packages to authenticate.
+A client launches the app and hits a button to search for a taxi, The client app sends a request to the DriverLocationManager with the client GPS coordinates, the maximum distance in meter (for the scope of the recherche), and the number of results to return ( If some taxis are in the scope but are not available, the client will contact others without sending again another request). The DriverLocationManager uses the Haversine formula to find the nearest connected taxis (the coordinates of all of the connected taxis are in an in-memory database for the speed and some constraints detailed in the DriverLocationManager [README](https://github.com/sitatec/Taluxi-Open-Source/tree/main/backend/driver_location_manager)) and return their coordinates. When the client app Receives the result, it uses a VoIP service to calls the nearest taxi. For more detail about the call process, see the [network_communication](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages/production/network_communication) package README. If the client and driver have found an agreement, the 2 apps use the [real_time_location](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages/production/real_time_location) package to share/track the driver position.
