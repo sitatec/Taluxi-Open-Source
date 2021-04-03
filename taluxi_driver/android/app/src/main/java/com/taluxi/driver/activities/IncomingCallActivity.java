@@ -12,6 +12,7 @@ public class IncomingCallActivity extends FullScreenActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incoming_call);
+        thisActivity = this;
         findViewById(R.id.activity_answer_call_button).setOnClickListener(__ -> {
             startActivity(new Intent(this, AnsweredCallActivity.class));
             finish();
@@ -22,5 +23,17 @@ public class IncomingCallActivity extends FullScreenActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        thisActivity = null;
+    }
 
+    private static IncomingCallActivity thisActivity;
+
+    public static void destroy(){
+        if (thisActivity != null) {
+          thisActivity.finish();
+        }
+    }
 }

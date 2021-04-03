@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_callkeep/flutter_callkeep.dart';
 import 'package:network_communication/network_communication.dart';
 import 'package:real_time_location/real_time_location.dart';
+import 'package:taluxi_driver/utils/incoming_call_platform_interface.dart';
 
 //TODO handle errors in the two apps.
 // TODO Refactore.
@@ -15,11 +15,13 @@ class StateManager {
   final RealTimeLocation _realTimeLocation;
   final BuildContext _context;
   var _callAccepted = false;
+  String _receivedCallId;
   Timer _antiSpamTimer;
   var _connectionStateRecentlyChanged = false;
   var _canChangeConnectionState = true;
   final _stateStreamController = StreamController<State>();
   String _incomingCallId;
+  IncomingCallPlatformInterface _incomingCallHandler;
 
   Stream<State> get state => _stateStreamController.stream;
 
@@ -29,33 +31,18 @@ class StateManager {
     @required RealTimeLocation realTimeLocation,
   })  : _currentUserId = currentUserId,
         _context = context,
-        _realTimeLocation = realTimeLocation;
+        _realTimeLocation = realTimeLocation {
+    _incomingCallHandler = IncomingCallPlatformInterface(
+        onCallAccepted: _acceptCall,
+        onCallHangedUp: _hangUpCall,
+        toggleSpeaker: _changeSpeakerState,
+        toggleMicrophone: _changeMicrophoneState);
+  }
 
   Future<void> connectsDriver() async {
-    // await _voIpProvider.initialize(_currentUserId);
-    // await Future.delayed(Duration(seconds: 5));
-    // final incomingCallHandler =
-    //     IncomingCallPlatformInterface(onCallAccepted: () {
-    //   _voIpProvider.acceptCall(
-    //     callId: "sitatech",
-    //     onCallAccepted: () => print("\n\n_____CALL-ACCEPTED_____\n\n"),
-    //     onCallLeft: (_) => print("\n\n_____CALL-LEFT_____\n\n"),
-    //     onFail: (_) => print("\n\n_____CALL-FAIL_____\n\n"),
-    //   );
-    // });
-    // return incomingCallHandler.displayIncomingCall('callerName', 'phoneNumber');
-    if (!(await CallKeep.isCurrentDeviceSupported)) {
-      _stateStreamController.add(
-        ConnectionFailed(
-          'Désolé, votre téléphone ne prend pas en charge certaines fonctionnalités de Taluxi. Veuillez essayer avec un autre téléphone.',
-        ),
-      );
-    }
     try {
       await _realTimeLocation.initialize(currentUserId: _currentUserId);
       await _voIpProvider.initialize(_currentUserId);
-      await CallKeep.setup();
-      await CallKeep.askForPermissionsIfNeeded(_context);
       _voIpProvider.incomingCallStream.listen(_inComingCallHandler);
       _realTimeLocation.startSharingLocation();
     } on DeviceLocationHandlerException catch (e) {
@@ -63,7 +50,7 @@ class StateManager {
     } on LocationRepositoryException catch (e) {
       _handleLocationRepositoryExceptions(e, ConnectionFailed(''));
     } on Exception {
-      // TODO raport
+      // TODO rapport
       _stateStreamController.add(
         ConnectionFailed(
           "Une erreur s'est produite, s'il vous plaît veuillez réessayer. Si l'erreur persiste veuillez relancer l'application et vérifier votre connexion internet.",
@@ -121,26 +108,6 @@ class StateManager {
     _stateStreamController.add(state);
   }
 
-// TODO implement anti spam.
-  // bool _preventSpam() {
-  //   if (_canChangeConnectionState) {
-  //     if (_connectionStateRecentlyChanged) {
-
-  //     }
-  //     _connectionStateRecentlyChanged = true;
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
-  // void lockConnectionState() {
-  //   _canChangeConnectionState = false;
-  //   _antiSpamTimer = Timer(Duration(minutes: 5), () {
-  //     _canChangeConnectionState = true;
-  //     _connectionStateRecentlyChanged = false;
-  //   });
-  // }
-
   Future<void> disconnectsDriver() async {
     try {
       await _realTimeLocation.stopLocationSharing();
@@ -152,44 +119,39 @@ class StateManager {
   }
 
   Future<void> _inComingCallHandler(String callId) async {
-    _manageCallEvent(callId);
-    await CallKeep.displayIncomingCall(
-      callId,
-      "Client Taluxi",
-      "Client Taluxi",
-      HandleType.number,
-      false,
-    );
-    await CallKeep.backToForeground();
+    _receivedCallId = callId;
+    return _incomingCallHandler.displayIncomingCall();
   }
 
-  void _manageCallEvent(String callId) {
-    _incomingCallId = callId;
+  void _acceptCall() async {
+    _callAccepted = true;
+    await _voIpProvider.acceptCall(
+      callId: _receivedCallId,
+      onCallAccepted: _onCallAccepted,
+      onCallLeft: _onCallLeft,
+      onFail: _onFail,
+    );
+  }
 
-    CallKeep.performAnswerCallAction.listen((_) async {
-      _callAccepted = true;
-      await _voIpProvider.acceptCall(
-        callId: callId,
-        onCallAccepted: _onCallAccepted,
-        onCallLeft: _onCallLeft,
-        onFail: _onFail,
-      );
-      CallKeep.setCurrentCallActive(callId);
-    });
+  void _hangUpCall() {
+    if (_callAccepted) {
+      _voIpProvider.leaveCall();
+    } else
+      _voIpProvider.rejectCall(_receivedCallId);
+  }
 
-    CallKeep.didPerformSetMutedCallAction.listen((muteEvent) {
-      if (muteEvent.muted)
-        _voIpProvider.disableMicrophone();
-      else
-        _voIpProvider.enableMicrophone();
-    });
+  void _changeSpeakerState(bool enabled) {
+    if (enabled) {
+      _voIpProvider.disableSpeaker();
+    } else
+      _voIpProvider.enableSpeaker();
+  }
 
-    CallKeep.performEndCallAction.listen((_) {
-      if (_callAccepted)
-        _voIpProvider.leaveCall();
-      else
-        _voIpProvider.rejectCall(callId);
-    });
+  void _changeMicrophoneState(bool enabled) {
+    if (enabled) {
+      _voIpProvider.disableMicrophone();
+    } else
+      _voIpProvider.enableMicrophone();
   }
 
   // TODO implement call callbacks.
@@ -197,7 +159,10 @@ class StateManager {
   void _onCallAccepted() {}
 
   void _onCallLeft(CallLeaveReason reason) {
-    CallKeep.endCall(_incomingCallId);
+    if (_callAccepted) {
+      _incomingCallHandler.callerLeftTheCall();
+    } else
+      _incomingCallHandler.callerHangedUp();
   }
 
   void _onFail(CallFailureReason reason) {}
@@ -207,6 +172,8 @@ class StateManager {
 
   void disableRideMode() => _realTimeLocation.disableRideMode();
 }
+
+//------- STATES -------///
 
 class State {
   const State();
@@ -218,6 +185,7 @@ class ConnectionStateLocked extends State {}
 
 class StateWithReason extends State {
   String reason;
+
   StateWithReason(this.reason);
 }
 

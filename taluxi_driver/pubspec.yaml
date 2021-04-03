@@ -28,8 +28,6 @@ dependencies:
     # git:
     #   url: https://github.com/sitatec/real_time_location.git
     #   ref: main
-  flutter_callkeep: ^0.1.8
-  # uuid: ^2.2.2
 
 dev_dependencies:
   flutter_test:

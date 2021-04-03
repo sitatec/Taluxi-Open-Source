@@ -56,6 +56,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.taluxi.driver.activities.AnsweredCallActivity"
+            android:theme="@style/Theme.IncomingCallNotification"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.taluxi.driver.activities.IncomingCallActivity"
+            android:theme="@style/Theme.IncomingCallNotification"
+            android:screenOrientation="portrait"
+            android:turnScreenOn="true"
+            android:showWhenLocked="true"/>
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
@@ -81,6 +92,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
 
         <service android:name="io.wazo.callkeep.VoiceConnectionService"
             android:label="Wazo"

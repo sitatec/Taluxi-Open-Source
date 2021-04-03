@@ -17,6 +17,7 @@
     </style>
 
     <style name="fabs_style">
+        <item name="tint">@color/white</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <!--        <item name="maxImageSize">40dp</item>-->
