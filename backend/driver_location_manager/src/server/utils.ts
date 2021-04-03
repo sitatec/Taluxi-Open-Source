@@ -25,16 +25,17 @@ const getRequestData = (
 };
 
 const distanceBetween = (first: Coordinates, second: Coordinates) => {
-  const dLat = (second.lat * Math.PI) / 180 - (first.lat * Math.PI) / 180;
-  const dLon = (second.lon * Math.PI) / 180 - (first.lon * Math.PI) / 180;
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos((first.lat * Math.PI) / 180) *
-      Math.cos((second.lat * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  // [6378.137] Radius of earth in KM
-  return 6378.137 * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+  const firstLatitudeInRadian = (first.lat * Math.PI) / 180;
+  const secondLatitudeInRadian = (second.lat * Math.PI) / 180;
+  const distanceBetweenLatitudes = secondLatitudeInRadian - firstLatitudeInRadian;
+  const distanceBetweenLongitudes = (second.lon - first.lon) * Math.PI / 180; // In radian
+  const x =
+    (Math.sin(distanceBetweenLatitudes / 2) ** 2) +
+    Math.cos(firstLatitudeInRadian) * Math.cos(secondLatitudeInRadian) *
+    Math.sin(distanceBetweenLongitudes / 2) * Math.sin(distanceBetweenLongitudes / 2);
+  // [x] Square of half the length between the points
+  // [6378.137] Radius of earth in KM (at the equator)
+  return 6378.137 * (2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x)));
 };
 
 const getSortedClosestCoordinates = (
