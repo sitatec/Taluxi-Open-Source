@@ -1,1 +1,1 @@
-![taluxi_screenshots](github.com/sitatec/Taluxi-X/assets/screens.png)
+![taluxi_screenshots](https://github.com/sitatec/Taluxi-X/blob/main/assets/screens.png)
