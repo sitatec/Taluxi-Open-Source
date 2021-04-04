@@ -1,0 +1,6 @@
+# [Taluxi](https://github.com/sitatec/Taluxi-Open-Source) drivers connection watcher
+The purpose of this microservice is just to "watch" the drivers connection state, if a driver is disconnected it notify the [DriverLocationManager](https://github.com/sitatec/Taluxi-Open-Source/tree/main/backend/driver_location_manager)
+and the DriverLocationManager delete the driver coordinates from the database.
+## How The DriverConnectionWatcher know if a driver is disconnected ?
+Each driver has its own node (that node is identified by the driver unique id) on firebase real-time database, that node is created when the driver authenticate and is removed whed it disconnect. To remove the node when its owner is disconnected I use the OnDisconnect class which is part of the firebase real-time database sdk, this class run a callback on the firebase server, in the case of Taluxi Driver that callback remove the disconnected driver node on the database. Because of the microservice is running on firebase cloud functions, it can be triggered by the real-time database events such as a delete event. When the function is triggered it send a delete request to the DriverLocationManager with the driver whose node has been deleted unique id.
+## ... writing in progress
