@@ -1,14 +1,3 @@
 # real_time_location
 
-A new Flutter package project.
-
-## Getting Started
-
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+This package manages all location-related features, it deals with the os to get one shot location or location stream, also the client of the [DriverLocationManager](https://github.com/sitatec/Taluxi-Open-Source/tree/main/backend/driver_location_manager) microservices is implemented on this repository. It uses Firebase real-time database to share the location in realtime. It sends the Driver location to the DriverLocationManager Every 1KM (1KM is a little bit long but it reduces the battery consumption and the server bandwidth), It will stop sending the location when the driver starts driving a client and will continue when the driver will be available again.
