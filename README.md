@@ -1,4 +1,4 @@
-# Taluxi
+# Taluxi (⚠️ In development)
 ![taluxi_screenshots](https://github.com/sitatec/Taluxi-X/blob/main/assets/screens.png)
 
 Taluxi is a taxi finder solution with two mobile apps built with Flutter (Taluxi and Taluxi Driver) and two microservices (DriverLocationManager and DriverConnectionWatcher) built with Nodejs (TypeScript). DriverLocationManager is hosted by [Google App Engine](https://cloud.google.com/appengine) and DriverConnectionWatcher is running on [Firebase Cloud Functions](https://firebase.google.com/products/functions). 
