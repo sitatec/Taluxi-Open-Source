@@ -8,6 +8,9 @@ To make the project more maintainable, I made it fully modular. The apps themsel
 > ⚠️ The project is tested only on Android, the Taluxi Passenger app may work on IOS but the UI is not IOS app-like. The Taluxi Driver app will not work on IOS because native code 
 > is used to implement a custom incoming call notification with a full-screen intent. All the packages are fully tested but the apps themselves are not yet because the project is currently in development. 
 
+## Requirements
+To be able to use all the features of the apps, you will need an [Agora AppID](https://docs.agora.io/en/Agora%20Platform/token?platform=Android) and an [OneSignal AppID](https://documentation.onesignal.com/docs/accounts-and-keys) and put each in the appropriated constant (according to de constant name) in the [config file](https://github.com/sitatec/Taluxi-Open-Source/blob/main/packages/production/network_communication/lib/src/config.dart) of the [network_communication](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages/production/network_communication) package.
+
 ## Scenario
 > ℹ️ The __Taluxi__ app is built for the Clients and the __Taluxi Driver__ app for the drivers. A Client is a person which is looking for a taxi and a Driver is... simply a taxi driver. 
 
