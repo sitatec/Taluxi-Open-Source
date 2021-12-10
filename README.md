@@ -1,4 +1,7 @@
-# Taluxi (⚠️ In development)
+# Taluxi (In development)
+> ⚠️ This project was created only for learning purposes. Using it in a production environment will not be a good idea for many reasons (the most important reason is that the `driver_location_manager` microservice find the closest driver using an algorithm that computes distances as the crow flies, it doesn't take into account the roads network and the delay that may be caused by the traffic). To use it in a prod env you should create or use an existing routing engine (depending on your needs) that relies on map data and live traffic data.
+
+
 ![taluxi_screenshots](https://github.com/sitatec/Taluxi-X/blob/main/assets/screens.png)
 
 Taluxi is a taxi finder solution with two mobile apps built with Flutter (Taluxi and Taluxi Driver) and two microservices (DriverLocationManager and DriverConnectionWatcher) built with Nodejs (TypeScript). DriverLocationManager is hosted by [Google App Engine](https://cloud.google.com/appengine) and DriverConnectionWatcher is running on [Firebase Cloud Functions](https://firebase.google.com/products/functions). 
