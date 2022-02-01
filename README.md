@@ -4,7 +4,7 @@
 
 ![taluxi_screenshots](https://github.com/sitatec/Taluxi-X/blob/main/assets/screens.png)
 
-Taluxi is a taxi finder solution with two mobile apps built with Flutter (Taluxi and Taluxi Driver) and two microservices (DriverLocationManager and DriverConnectionWatcher) built with Nodejs (TypeScript). DriverLocationManager is hosted by [Google App Engine](https://cloud.google.com/appengine) and DriverConnectionWatcher is running on [Firebase Cloud Functions](https://firebase.google.com/products/functions). 
+Taluxi is a taxi finder solution with two mobile apps built with Flutter (Taluxi and Taluxi Driver) and two microservices (DriverLocationManager and DriverConnectionWatcher) built with Nodejs (TypeScript). DriverLocationManager is hosted by [Google Cloud App Engine](https://cloud.google.com/appengine) and DriverConnectionWatcher is running on [Firebase Cloud Functions](https://firebase.google.com/products/functions). 
 
 To make the project more maintainable, I made it fully modular. The apps themselves don't depend on any external service or library (except for the libraries for the UI) even the microservices that are part of the project, instead, they depend only on the [packages](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages) that are part of the project, and those packages depend on services like firebase, agora, or the project microservices. All the packages expose a clean API and apply most of the SOLID principles (so also the packages are maintainable).
 
