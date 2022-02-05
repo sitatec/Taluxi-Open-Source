@@ -1,6 +1,6 @@
 # Taluxi
 
-This repository is the merge of my following repositories (I have added more package since the merge):
+This repository is the merge of my following repositories (I have created more packages since the merge):
  - [taluxi](https://github.com/sitatec/taluxi)
  - [network_communication](https://github.com/sitatec/network_communication)
  - [real_time_location](https://github.com/sitatec/real_time_location)
