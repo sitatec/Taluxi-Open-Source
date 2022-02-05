@@ -5,7 +5,7 @@ This repository is the merge of my following repositories (I have created more p
  - [network_communication](https://github.com/sitatec/network_communication)
  - [real_time_location](https://github.com/sitatec/real_time_location)
  - [user_manager](https://github.com/sitatec/user_manager)
- - [taluxi_common](https://github.com/sitatec/taluxi_common)
+ - [taluxi_shared_components](https://github.com/sitatec/taluxi_common)
 <br>
 
 > ⚠️ This project was created only for learning purposes. Using it in a production environment will not be a good idea for many reasons (the most important reason is that the `driver_location_manager` microservice find the closest driver using an algorithm that computes distances as the crow flies ([The Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula)), it doesn't take into account the roads network and the delay that may be caused by the traffic). To use it in a prod env you should create or use an existing routing engine (depending on your needs) that relies on map data and live traffic data.
