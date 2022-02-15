@@ -21,7 +21,7 @@ I made the project fully modular, which make its modules easily and independentl
 > is used to implement a custom incoming call notification with a full-screen intent(I might implement that on IOS using the CallKit tool in the future). All the packages are fully tested but the apps themselves (the UIs) are not yet. 
 
 ## Requirements
-To be able to use all the features of the apps, you will need an [Agora AppID](https://docs.agora.io/en/Agora%20Platform/token?platform=Android) and an [OneSignal AppID](https://documentation.onesignal.com/docs/accounts-and-keys) and put each in the appropriated constant (according to de constant name) in the [config file](https://github.com/sitatec/Taluxi-Open-Source/blob/main/packages/production/network_communication/lib/src/config.dart) of the [network_communication](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages/production/network_communication) package.
+To be able to use all the features of the apps, you will need an [Agora AppID](https://docs.agora.io/en/Agora%20Platform/token?platform=Android) and an [OneSignal AppID](https://documentation.onesignal.com/docs/accounts-and-keys) and put each in the appropriated constant (according to the constant name) in the [config file](https://github.com/sitatec/Taluxi-Open-Source/blob/main/packages/production/network_communication/lib/src/config.dart) of the [network_communication](https://github.com/sitatec/Taluxi-Open-Source/tree/main/packages/production/network_communication) package.
 
 ## Scenario
 > ℹ️ The __Taluxi__ app is built for the Clients and the __Taluxi Driver__ app for the drivers. A Client is a person that is looking for a taxi and a Driver is... simply a taxi driver. 
