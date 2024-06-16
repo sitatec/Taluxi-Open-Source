@@ -1,5 +1,7 @@
 # Taluxi
 
+A better version (OpenTaxi) can be found [here](https://github.com/sitatec/OpenTaxi). Make sure check the license.
+
 This repository is the merge of my following repositories (I have created more packages since the merge):
  - [taluxi](https://github.com/sitatec/taluxi)
  - [network_communication](https://github.com/sitatec/network_communication)
